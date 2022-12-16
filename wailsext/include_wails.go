@@ -11,7 +11,7 @@ import (
 
 var (
 	windowRuntime js.Value = js.Global().Get("window").Get("runtime")
-	windowGo      js.Value = js.Global().Get("window").Get("go")
+	WindowGo      js.Value = js.Global().Get("window").Get("go")
 )
 
 type Mapper map[string]interface{}
@@ -120,8 +120,8 @@ func (m Mapper) GetMap(key string) Mapper {
 	}
 }
 
-func WailsCall(pkgName, structName, funcName string, cb func(this js.Value, args []js.Value) any, args ...any) js.Value {
-	var pkg = windowGo.Get(pkgName)
+func GetStructure(pkgName, structName string) js.Value {
+	var pkg = WindowGo.Get(pkgName)
 	if !pkg.Truthy() {
 		panic("package not found: " + pkgName)
 	}
@@ -129,6 +129,19 @@ func WailsCall(pkgName, structName, funcName string, cb func(this js.Value, args
 	if !structure.Truthy() {
 		panic("structure not found: " + structName)
 	}
+	return structure
+}
+
+func CallNoRet(pkgName, funcName string, args ...any) {
+	var function = WindowGo.Get(pkgName).Get(funcName)
+	if !function.Truthy() {
+		panic("function not found: " + funcName)
+	}
+	function.Invoke(args...)
+}
+
+func WailsCall(pkgName, structName, funcName string, cb func(this js.Value, args []js.Value) any, args ...any) js.Value {
+	var structure = GetStructure(pkgName, structName)
 	var function = structure.Get(funcName)
 	if !function.Truthy() {
 		panic("function not found: " + funcName)
