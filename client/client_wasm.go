@@ -66,7 +66,10 @@ func (ac *APIClient) WithCookies(c ...string) *APIClient {
 // Execute the request -> APIClient.exec
 func (c *APIClient) exec(cb func(resp *http.Response)) {
 	var resp, err = c.client.Do(c.request)
-	c.clientErr(err)
+	if err != nil {
+		c.clientErr(err)
+		return
+	}
 	defer resp.Body.Close()
 	if err == nil {
 		err = cookies.GlobalJar.SetHTTPCookies(resp.Cookies())
