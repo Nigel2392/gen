@@ -217,6 +217,14 @@ func (e *Element) WasmFormSubmit(f func(data map[string]string)) (string, Ready)
 	return className, rdy
 }
 
+func (e *Element) WasmClearForm() {
+	var id = e.GetID()
+	var form = js.Global().Get("document").Call("getElementById", id)
+	if !form.IsUndefined() && !form.IsNull() {
+		form.Call("reset")
+	}
+}
+
 func (e *Element) WasmFormSubmitToStruct(strct any, f func(strct any)) (string, Ready) {
 	if !strings.EqualFold(e.Type, "form") {
 		panic("WasmFormSubmit() can only be used on form elements")

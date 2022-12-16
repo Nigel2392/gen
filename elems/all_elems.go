@@ -414,7 +414,7 @@ func Select(name string, listItems []any, deflt ...string) *Element {
 		v.Class(deflt[0])
 	}
 	if len(deflt) > 1 {
-		v.Add(Option(deflt[1]))
+		v.Add(Option(deflt[1]).A_Disabled())
 	}
 	for _, item := range listItems {
 		var refl_item = reflect.ValueOf(item)
