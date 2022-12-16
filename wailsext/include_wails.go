@@ -132,23 +132,15 @@ func GetStructure(pkgName, structName string) js.Value {
 	return structure
 }
 
-func CallNoRet(pkgName, funcName string, args ...any) {
-	var function = WindowGo.Get(pkgName).Get(funcName)
-	if !function.Truthy() {
-		panic("function not found: " + funcName)
-	}
-	function.Invoke(args...)
-}
-
 func WailsCall(pkgName, structName, funcName string, cb func(this js.Value, args []js.Value) any, args ...any) js.Value {
 	var structure = GetStructure(pkgName, structName)
+	// Function is a promise, so we need to call the callback when it resolves
+	if cb == nil {
+		return structure.Call(funcName, args...)
+	}
 	var function = structure.Get(funcName)
 	if !function.Truthy() {
 		panic("function not found: " + funcName)
-	}
-	// Function is a promise, so we need to call the callback when it resolves
-	if cb == nil {
-		return function.Invoke(args...)
 	}
 	return function.Invoke(args...).Call("then", js.FuncOf(cb))
 }
