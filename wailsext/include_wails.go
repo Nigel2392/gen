@@ -134,6 +134,9 @@ func WailsCall(pkgName, structName, funcName string, cb func(this js.Value, args
 		panic("function not found: " + funcName)
 	}
 	// Function is a promise, so we need to call the callback when it resolves
+	if cb == nil {
+		return function.Invoke(args...)
+	}
 	return function.Invoke(args...).Call("then", js.FuncOf(cb))
 }
 
