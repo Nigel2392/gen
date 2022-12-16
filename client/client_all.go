@@ -99,6 +99,24 @@ func (c *APIClient) Delete(url string) *APIClient {
 	return c
 }
 
+// Initialize a OPTIONS request
+func (c *APIClient) Options(url string) *APIClient {
+	c.request = c.getRequest(OPTIONS, url)
+	return c
+}
+
+// Initialize a HEAD request
+func (c *APIClient) Head(url string) *APIClient {
+	c.request = c.getRequest(HEAD, url)
+	return c
+}
+
+// Initialize a TRACE request
+func (c *APIClient) Trace(url string) *APIClient {
+	c.request = c.getRequest(TRACE, url)
+	return c
+}
+
 // Add form data to the request
 func (c *APIClient) WithData(formData map[string]string, encoding Encoding, file ...File) *APIClient {
 	if c.request == nil {
