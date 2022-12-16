@@ -195,7 +195,7 @@ func (elements *Elements) ActiveToggleListener(fn ...func(this js.Value, args []
 	return rdy
 }
 
-func (e *Element) WasmFormSubmit(f func(data map[string]string)) (string, Ready) {
+func (e *Element) WasmFormSubmit(f func(data map[string]string, elements []js.Value)) (string, Ready) {
 	if !strings.EqualFold(e.Type, "form") {
 		panic("WasmFormSubmit() can only be used on form elements")
 	}
@@ -205,13 +205,15 @@ func (e *Element) WasmFormSubmit(f func(data map[string]string)) (string, Ready)
 		var data = make(map[string]string)
 		var elements = this.Get("elements")
 		var length = elements.Get("length").Int()
+		var elemList = make([]js.Value, length)
 		for i := 0; i < length; i++ {
 			var element = elements.Index(i)
 			var name = element.Get("name").String()
 			var value = element.Get("value").String()
 			data[name] = value
+			elemList[i] = element
 		}
-		f(data)
+		f(data, elemList)
 		return nil
 	})
 	return className, rdy
@@ -225,16 +227,16 @@ func (e *Element) WasmClearForm() {
 	}
 }
 
-func (e *Element) WasmFormSubmitToStruct(strct any, f func(strct any)) (string, Ready) {
+func (e *Element) WasmFormSubmitToStruct(strct any, f func(strct any, elements []js.Value)) (string, Ready) {
 	if !strings.EqualFold(e.Type, "form") {
 		panic("WasmFormSubmit() can only be used on form elements")
 	}
-	var className, rdy = e.WasmFormSubmit(func(data map[string]string) {
+	var className, rdy = e.WasmFormSubmit(func(data map[string]string, elements []js.Value) {
 		var err = FormDataToStruct(data, strct)
 		if err != nil {
 			panic(err)
 		}
-		f(strct)
+		f(strct, elements)
 	})
 	return className, rdy
 }
