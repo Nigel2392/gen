@@ -1,0 +1,442 @@
+/* 
+##################################################################
+ROTATING BUTTONS
+##################################################################
+*/
+.rotateanimation{
+    text-decoration: none;
+    color: #666666;
+    font-family: sans-serif;
+    z-index: 5;
+    font-size: 25px;
+    border: 5px solid #272727;
+    transition: transform 1s, color 3s;
+    padding: 20px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.rotateanimation:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #9200ff;
+    z-index: -1;
+    transform-origin: top left;
+    transform: rotate(90deg);
+    transition: transform 1s ease-in 0.1s, color 3s ease-in-out 0.1s;
+}
+.rotateanimation:hover:before{
+    transform: rotate(0deg);
+}
+.rotateanimation:hover{
+    color: white;
+}
+button.rotateanimation{
+    background-color: transparent;
+}
+/* 
+##################################################################
+SWIPE BUTTONS
+##################################################################
+*/
+
+.slideanimation-left{
+    text-decoration: none;
+    color: #9200ff;
+    font-family: sans-serif;
+    font-size: 40px;
+    border: 3px solid #9200ff;
+    padding: 20px 40px;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+}
+.slideanimation-left:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #9200ff;
+    z-index: -1;
+    transform: translateX(-100%);
+    transition: transform 1s ease-in-out 0.1s,color 5s ease-in-out 0.1s;
+}
+.slideanimation-left:hover:before{
+    transform: translateX(0);
+}
+.slideanimation-left:hover{
+    color: white;
+}
+
+
+.slideanimation-right{
+    text-decoration: none;
+    color: #9200ff;
+    font-family: sans-serif;
+    font-size: 40px;
+    border: 3px solid #9200ff;
+    padding: 40px 80px;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+}
+.slideanimation-right:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #9200ff;
+    z-index: -1;
+    transform: translateX(100%);
+    transition: transform 1s ease-in-out 0.1s,color 5s ease-in-out 0.1s;
+}
+.slideanimation-right:hover:before{
+    transform: translateX(0);
+}
+.slideanimation-right:hover{
+    color: white;
+}
+
+
+.slideanimation-top{
+    text-decoration: none;
+    color: #351435;
+    font-family: sans-serif;
+    font-size: 40px;
+    border: 3px solid #351435;
+    padding: 40px 80px;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+}
+.slideanimation-top:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #351435;
+    z-index: -1;
+    transform: translateY(-100%);
+    transition: transform 1s ease-in-out 0.1s,color 5s ease-in-out 0.1s;
+}
+.slideanimation-top:hover:before{
+    transform: translateX(0);
+}
+.slideanimation-top:hover{
+    color: white;
+}
+
+.slideanimation-bottom{
+    text-decoration: none;
+    color: #351435;
+    font-family: sans-serif;
+    font-size: 40px;
+    border: 3px solid #351435;
+    padding: 40px 80px;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+}
+.slideanimation-bottom:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #351435;
+    z-index: -1;
+    transform: translateY(100%);
+    transition: transform 1s ease-in-out 0.1s,color 5s ease-in-out 0.1s;
+}
+.slideanimation-bottom:hover:before{
+    transform: translateX(0);
+}
+.slideanimation-bottom:hover{
+    color: white;
+}
+/* 
+##################################################################
+CREATIVE HOVER BUTTONS
+##################################################################
+*/
+
+.creativehover{
+    z-index: 5;
+    padding: 40px 80px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #262626;
+    font-size: 45px;
+    letter-spacing: 2px;
+    border: 5px solid #262626;
+    position: relative;
+    transition: 1s;
+}
+.creativehover:before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #262626;
+    transition: 1s;
+    transform: rotateX(90deg);
+    z-index: 4;
+}
+.creativehover:after{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #262626;
+    transition: 1s;
+    transform: rotateY(90deg);
+    z-index: 4;
+}
+.creativehover:hover:before{
+    transform: rotateX(180deg);
+}
+.creativehover:hover:after{
+    transform: rotateY(180deg);
+}
+
+.creativehover:hover{
+    color: white;
+}
+/* 
+##################################################################
+STRETCH BUTTONS
+##################################################################
+*/
+.creativestretch{
+    text-decoration: none;
+    padding: 40px 80px;
+    color: #9200ff;
+    border: 3px solid #9200ff;
+    text-transform: uppercase;
+    font-size: 40px;
+    font-family: 'roboto';
+    font-weight: 300;
+    letter-spacing: -2px;
+    transition: all 0.5s;
+}
+.creativestretch:hover{
+    font-weight: 900;
+    letter-spacing: 10px;
+    border: 7px solid #9200ff;
+    color: white;
+}
+/* 
+##################################################################
+BETTERSWIPE BUTTONS
+##################################################################
+*/
+.betterswipe{
+    text-decoration: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 40px;
+    border: 3px solid white;
+    padding: 40px 80px;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+}
+.betterswipe:before{
+    content: 'Yeah!';
+    position: absolute;
+    color: white;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f44336;
+    transform: translateY(-100%);
+    transition: transform 1s ease-in-out 0.1s,color 5s ease-in-out 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.betterswipe:hover:before{
+    transform: translateX(0);
+}
+.betterswipe:hover{
+    color: white;
+}
+
+/* 
+##################################################################
+GLOW BUTTONS
+##################################################################
+*/
+.shiny{
+    text-decoration: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    border: 3px solid #bbbbbb;
+    padding: 20px 40px;
+    position: relative;
+    transition: all 0.3s;
+    overflow: hidden;
+
+}
+.shiny:hover{
+    background-color: #9200ff;
+    color: white;
+}
+.shiny:before{
+    content: '';
+    background-color: white;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 70px;
+    position: absolute;
+    transform: translateX(-100%) rotate(45deg);
+    transition: all 0.3s;
+}
+.shiny:hover:before{
+    transform: translateX(100%) rotate(60deg);
+    color: white;
+}
+/* 
+##################################################################
+SWAP BUTTONS
+##################################################################
+*/
+.doubleswap{
+    text-decoration: none;
+    background-color: #262626;
+    font-family: sans-serif;
+    font-size: 40px;
+    border: 4px solid #262626;
+    padding: 40px 80px;
+    position: relative;
+    color: transparent;
+    overflow: hidden;
+}
+.doubleswap:before{
+    content: 'Hover me!';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fffa65;
+    color: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+.doubleswap:after{
+    content: 'Hover me!';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fffa65;
+    color: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+    transform: translate(-100%,100%) rotate(90deg);
+}
+.doubleswap:hover:before{
+    transform: translate(100%, -100%) rotate(90deg);
+}
+.doubleswap:hover:after{
+    transform: translate(0%, 0%) rotate(0deg);
+}
+/* 
+##################################################################
+TEXT SCALE BUTTONS
+##################################################################
+*/
+.fadein{
+    text-decoration: none;
+    color: #262626;
+    font-family: sans-serif;
+    font-size: 40px;
+    border: 3px solid #262626;
+    background-color: #5a5a5a;
+    padding: 20px 40px;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+.fadein:before{
+    content: 'Send!';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #262626;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(5);
+    opacity: 0;
+    transition: all 0.5s;
+}
+.fadein:hover:before{
+    transform: scale(1);
+    opacity: 1;
+}
+/* 
+##################################################################
+CIRCULARSWAP BUTTONS
+##################################################################
+*/
+.circularswap{
+    border: 2px solid #9200ff;
+    text-align:center;
+    max-width:100%;
+    width:100%;
+    background: none;
+    color: #9200ff;
+    padding: 20px 40px;
+    font-size: 25px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+.circularswap:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #9200ff;
+    z-index: -1;
+    border-radius: 0 0 50% 50%;
+    height: 0%;
+    transition: all 0.5s;
+}
+.circularswap:hover:before{
+    height: 200%;
+}
+.circularswap:hover{
+    color: white;
+}
